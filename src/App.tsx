@@ -1,15 +1,19 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Detail from './pages/Detail';
+import { ColaboradorProvider } from './context/ColaboradorContext';
+
 function App() {
   return (
-    <main style={{ display: 'flex', justifyContent: 'center', padding: '2rem' }}>
-      <iframe
-        style={{ border: '1px solid rgba(0, 0, 0, 0.1)' }}
-        width="800"
-        height="450"
-        src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/file/fQaTM68I4Bi8YnmFzoTNFk/Ilumeo---Teste-Fullstack?node-id=26%3A2"
-        allowFullScreen
-      ></iframe>
-    </main>
-  )
+    <BrowserRouter>
+      <ColaboradorProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/:id" element={<Detail />} />
+        </Routes>
+      </ColaboradorProvider>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
